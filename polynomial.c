@@ -33,13 +33,13 @@ polynomial* addPolynomial(polynomial* p1, polynomial* p2) {
 
 	int i = 0, j = 0;
 
-	while (i < sizeArrayList(p1) || j < sizeArrayList(p2)) {			//&&연산자는 한쪽이 끝나면 멈춰버려 ||로 교체
+	while (i < sizeArrayList(p1) || j < sizeArrayList(p2)) {			// &&연산자는 한쪽이 끝나면 멈춰버려 ||로 교체
 
-		if (i == sizeArrayList(p1) || (i < sizeArrayList(p1) && p1->data[i].expo < p2->data[j].expo)) {		//한쪽이 끝나면 남은 항 추가
+		if (i == sizeArrayList(p1) || (i < sizeArrayList(p1) && p1->data[i].expo < p2->data[j].expo)) {		//p1이 끝나면 p2의 남은 항 추가
 			addItemPolynomial(r, p2->data[j]);
 			j++;
 		}
-		else if (j == sizeArrayList(p2) || (j < sizeArrayList(p2) && p1->data[i].expo > p2->data[j].expo)) { //한쪽이 끝나면 남은 항 추가
+		else if (j == sizeArrayList(p2) || (j < sizeArrayList(p2) && p1->data[i].expo > p2->data[j].expo)) { //p2가 끝나면 p1의 남은 항 추가
 			addItemPolynomial(r, p1->data[i]);
 			i++;
 		}
@@ -59,7 +59,7 @@ polynomial* addPolynomial(polynomial* p1, polynomial* p2) {
 
 polynomial* multiPolynomial(polynomial* p1, polynomial* p2) {
 
-	//인덱스 = [i]는 지수 표현, 해당 인덱스의 값은 차수 = ExpoArray[i]
+	//인덱스 그 자체 = [i]는 지수 표현, 해당 인덱스의 값은 차수 = ExpoArray[i]
 
 	int maxExpo = p1->data[0].expo + p2->data[0].expo;
 	int* ExpoArray = (int*)malloc((maxExpo + 1) * sizeof(int)); //최대 지수를 구한 후 0 ~ 최대지수 만큼 배열 생성 
